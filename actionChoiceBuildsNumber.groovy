@@ -3,7 +3,7 @@ import hudson.plugins.git.GitSCM
 import hudson.plugins.git.BranchSpec
 
 //def JOB_BRANCH = '2.1.2'
-//def BUILDS = params.BUILDS
+def BUILDS_IT = BUILDS.toString()
 def JOB_NAME = 'osinit/aeca-certificate-authority/osinit-mirror%2Faeca%2Fcertificate-authority%2Faeca-ca'
 def folder = Jenkins.instance.getItemByFullName("${JOB_NAME}")
 def jobs = folder.getAllItems(hudson.model.Job.class)
@@ -44,8 +44,8 @@ def getBuildNumberFromDisplayName = { displayName ->
     return build ? build.number : null
 }
 
-def chosenDisplayName = '791'
+def chosenDisplayName = BUILDS_IT
 def correspondingBuildNumber = getBuildNumberFromDisplayName(chosenDisplayName)
 def buildNumberParam = correspondingBuildNumber
-//return BUILDS
+//return [BUILDS_IT]
 return [buildNumberParam]
